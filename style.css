@@ -1,0 +1,99 @@
+:root{
+  --bg:#0b0b0d;
+  --panel:#141417cc;
+  --glass:rgba(20,20,23,.45);
+  --stroke:#2a2a31;
+  --fg:#e8e8ee;
+  --muted:#9aa0a6;
+  --red:#ff2b2b;
+  --blue:#55a7ff;
+  --green:#35dc82;
+  --shadow:0 12px 40px rgba(0,0,0,.45);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:radial-gradient(1200px 800px at 65% -10%, #121218 0%, #0b0b0d 50%);color:var(--fg);font:500 16px/1.35 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+h1,h2{margin:0 0 .5rem 0;letter-spacing:.02em}
+button,input,select{font:inherit}
+.screen{display:none;min-height:100dvh;padding:calc(env(safe-area-inset-top,0) + 12px) 12px calc(env(safe-area-inset-bottom,0) + 12px)}
+.screen.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.logo-wrap{display:grid;place-items:center;gap:16px;height:75dvh}
+.logo{width:96px;filter:drop-shadow(0 6px 20px rgba(255,43,43,.2))}
+.progress{width:240px;height:4px;background:#1a1a1f;border-radius:999px;overflow:hidden}
+.progress span{display:block;width:40%;height:100%;background:linear-gradient(90deg,#b10000,#ff2b2b,#b10000);animation:load 1.2s infinite ease-in-out}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+.splash-foot{color:var(--muted);text-align:center;opacity:.8}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:6px 4px}
+.top-actions{display:flex;gap:8px}
+.icon-btn{background:transparent;border:1px solid var(--stroke);color:var(--fg);padding:8px 10px;border-radius:12px}
+.icon-btn:active{transform:scale(.98)}
+.panel{margin:8px auto;max-width:720px}
+.glass{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--glass);border:1px solid rgba(255,255,255,.05);backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:var(--radius);padding:16px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input,.field select{background:#111119;border:1px solid var(--stroke);border-radius:12px;padding:12px;color:var(--fg)}
+.actions{display:flex;gap:12px;margin-top:12px}
+.btn{border:none;background:#1a1a22;color:var(--fg);padding:12px 16px;border-radius:12px;border:1px solid var(--stroke)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:linear-gradient(180deg,#ff3a3a,#c50909);border-color:#ff3a3a;box-shadow:0 12px 24px rgba(255,58,58,.25)}
+.btn-ghost{background:transparent}
+.btn-danger{background:#2a1111;border-color:#4a1a1a;color:#ff7b7b}
+
+.camera-wrap{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;border:1px solid #1a1a23;background:#050507}
+video,canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hud{position:absolute;left:8px;top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.pill{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06);padding:8px 10px;border-radius:999px}
+.stat{background:rgba(0,0,0,.45);padding:6px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.06)}
+.stat .label{color:var(--muted);margin-right:6px}
+.banner{position:absolute;left:50%;top:10px;transform:translateX(-50%);background:#001b00;border:1px solid #1b4d1b;color:#b8ffb8;padding:8px 12px;border-radius:10px;box-shadow:var(--shadow)}
+.hidden{display:none}
+
+.dock{display:flex;gap:10px;justify-content:center;margin:12px auto}
+.switch{display:flex;align-items:center;gap:10px;margin:8px 0}
+.switch input{accent-color:#ff2b2b}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0) + 12px);transform:translateX(-50%);background:#1a1a22;border:1px solid var(--stroke);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow);z-index:1000}
+
+.ring-fit{position:relative;display:grid;place-items:center;aspect-ratio:1/1;margin-top:10px;border:1px dashed #2a2a31;border-radius:14px;overflow:hidden}
+.hint{color:var(--muted);font-size:.9rem;margin-top:8px;text-align:center}
+.snapshot{margin:0;display:grid;gap:8px}
+
+/* helpful for manual shot adding */
+.aim-cursor{cursor:crosshair}
+
+/* === Logging UI (added) === */
+.log-dock{
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  display:flex;
+  gap:6px;
+  z-index:1001;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(10px);
+  padding:6px;
+  border-radius:10px;
+}
+.log-viewer{
+  position:fixed;
+  left:10px;
+  right:10px;
+  bottom:60px;
+  height:40vh;
+  z-index:1001;
+  background:#000000e6;
+  border:1px solid #333;
+  color:#c7f5c7;
+  overflow:auto;
+  padding:10px;
+  border-radius:10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:12px;
+  line-height:1.35;
+  white-space:pre-wrap;
+}

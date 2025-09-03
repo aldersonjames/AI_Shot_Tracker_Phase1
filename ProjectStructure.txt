@@ -1,0 +1,12 @@
+ai-shot-tracker/
+│
+├── index.html
+├── style.css
+├── app.js
+├── mec.js
+├── geometry.js
+├── worker.js
+├── manifest.webmanifest
+├── sw.js
+└── assets/
+    └── icon-512.png   (any 512×512 PNG)
